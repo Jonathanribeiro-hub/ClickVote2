@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Votação de Tópicos Médicos</title>
+</head>
+<body>
+    <h1>Votação de Tópicos Médicos</h1>
+
+    <form id="votingForm">
+        <h3>1. Mobility and Support Medical Devices</h3>
+        <label><input type="radio" name="topic1" value="sim"> Gostaria de votar em favor</label>
+        <label><input type="radio" name="topic1" value="nao"> Não gostaria de votar</label>
+
+        <h3>2. Medical Tools</h3>
+        <label><input type="radio" name="topic2" value="sim"> Gostaria de votar em favor</label>
+        <label><input type="radio" name="topic2" value="nao"> Não gostaria de votar</label>
+
+        <h3>3. Gas Mask</h3>
+        <label><input type="radio" name="topic3" value="sim"> Gostaria de votar em favor</label>
+        <label><input type="radio" name="topic3" value="nao"> Não gostaria de votar</label>
+
+        <h3>4. Generator</h3>
+        <label><input type="radio" name="topic4" value="sim"> Gostaria de votar em favor</label>
+        <label><input type="radio" name="topic4" value="nao"> Não gostaria de votar</label>
+
+        <br><br>
+        <button type="button" onclick="contarVotos()">Submeter Votos</button>
+    </form>
+
+    <div id="resultado" style="display:none;">
+        <h2>Resultado da Votação</h2>
+        <p id="resultadoTopic1"></p>
+        <p id="resultadoTopic2"></p>
+        <p id="resultadoTopic3"></p>
+        <p id="resultadoTopic4"></p>
+    </div>
+
+    <script>
+        let votos = 0;
+
+        function contarVotos() {
+            votos++;
+
+            if (votos >= 4) {
+                exibirResultado();
+            }
+        }
+
+        function exibirResultado() {
+            document.getElementById("resultado").style.display = "block";
+
+            const topic1 = document.querySelector('input[name="topic1"]:checked').value;
+            const topic2 = document.querySelector('input[name="topic2"]:checked').value;
+            const topic3 = document.querySelector('input[name="topic3"]:checked').value;
+            const topic4 = document.querySelector('input[name="topic4"]:checked').value;
+
+            document.getElementById("resultadoTopic1").innerText = "Mobility and Support Medical Devices: " + topic1;
+            document.getElementById("resultadoTopic2").innerText = "Medical Tools: " + topic2;
+            document.getElementById("resultadoTopic3").innerText = "Gas Mask: " + topic3;
+            document.getElementById("resultadoTopic4").innerText = "Generator: " + topic4;
+        }
+    </script>
+</body>
+</html>
